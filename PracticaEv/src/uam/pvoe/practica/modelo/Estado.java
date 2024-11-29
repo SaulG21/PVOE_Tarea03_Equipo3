@@ -14,6 +14,15 @@ public class Estado {
     private String nombre;
     private String clave;
 
+    public Estado(){
+        
+    }
+    
+    public Estado(String nombre, String clave){
+        this.clave = clave;
+        this.nombre = nombre;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -29,6 +38,13 @@ public class Estado {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    @Override
+    public String toString() {
+        String message = getNombre();
+        return message;
+    }
+    
     
     
     

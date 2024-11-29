@@ -33,6 +33,13 @@ public class Servicio {
     DESP
     */
 
+    public Servicio(String nombre, String clave) {
+        this.nombre = nombre;
+        this.clave = clave;
+    }
+
+    
+    
     public String getNombre() {
         return nombre;
     }

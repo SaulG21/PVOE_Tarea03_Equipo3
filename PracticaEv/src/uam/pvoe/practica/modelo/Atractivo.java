@@ -12,7 +12,7 @@ package uam.pvoe.practica.modelo;
 public class Atractivo {
     
     private String nombre;
-    private String atractivo;
+    private String claveAtractivo;
 
     public String getNombre() {
         return nombre;
@@ -22,13 +22,19 @@ public class Atractivo {
         this.nombre = nombre;
     }
 
-    public String getAtractivo() {
-        return atractivo;
+    public String getClaveAtractivo() {
+        return claveAtractivo;
     }
 
-    public void setAtractivo(String atractivo) {
-        this.atractivo = atractivo;
+    public void setClaveAtractivo(String claveEstado) {
+        this.claveAtractivo = claveEstado;
+    }   
+
+    @Override
+    public String toString() {
+        return nombre;
     }
+    
     
     
     

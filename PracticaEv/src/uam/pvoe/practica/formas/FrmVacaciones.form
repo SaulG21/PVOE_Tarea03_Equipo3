@@ -7,6 +7,8 @@
         <Property name="text" type="java.lang.String" value="jRadioButton1"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrpFormaViaje">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -34,52 +36,57 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="spr" min="-2" pref="760" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbEstados" pref="498" max="32767" attributes="0"/>
-                          <Component id="cmbAtractivos" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="lblSeleccionaEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSeleccionaAtractivo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnAutobus" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="btnAvion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="btnAutoPropio" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="btnAutoRentado" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblFormaViaje" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="chkTour" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="chkGuarderia" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="chkDesayuno" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="chkLavanderia" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblServicioAdicional" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="spr" min="-2" pref="760" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbEstados" pref="498" max="32767" attributes="0"/>
+                              <Component id="cmbAtractivos" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="chkCajaFuerte" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkDespertador" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSeleccionaEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSeleccionaAtractivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnAutobus" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="btnAvion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="btnAutoPropio" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="btnAutoRentado" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblFormaViaje" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="chkTour" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="chkGuarderia" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="chkDesayuno" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="chkLavanderia" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblServicioAdicional" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chkDespertador" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkCajaFuerte" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,9 +128,9 @@
                   <Component id="chkGuarderia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="chkDespertador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
               <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,31 +147,24 @@
     <Component class="javax.swing.JComboBox" name="cmbEstados">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEstadosActionPerformed"/>
+      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Estado&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbAtractivos">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Atractivo&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSeleccionaEstado">
@@ -188,12 +188,24 @@
     <Component class="javax.swing.JSeparator" name="spr">
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnAutobus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Autobus"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnAvion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avi&#xf3;n"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnAutoPropio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Auto Propio"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="btnAutoRentado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Auto Rentado"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFormaViaje">
       <Properties>
@@ -205,38 +217,41 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkDesayuno">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
+        <Property name="text" type="java.lang.String" value="Desayuno"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkTour">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox2"/>
+        <Property name="text" type="java.lang.String" value="Tour"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkLavanderia">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox3"/>
+        <Property name="text" type="java.lang.String" value="Lavanderia"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkGuarderia">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox4"/>
+        <Property name="text" type="java.lang.String" value="Guarder&#xed;a"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkCajaFuerte">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox5"/>
+        <Property name="text" type="java.lang.String" value="Caja Fuerte"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkDespertador">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox6"/>
+        <Property name="text" type="java.lang.String" value="Despertador"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnRegistrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -11,29 +11,38 @@ package uam.pvoe.practica.modelo;
  */
 public class MedioTransporte {
     
-    private int nombre;
+    private String nombre;
         /*Los nombres deberán ser Auto, Autobús, Avión, Auto Rentado*/
           
-    private int clave;
+    private String clave;
         /*Las claves deberán ser AUTO, BUS, AVION, AUTO_R*/
 
-    
-    public int getNombre() {
+    public MedioTransporte(){
+        
+    }
+
+    public MedioTransporte(String nombre, String clave) {
+        this.nombre = nombre;
+        this.clave = clave;
+    }
+
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public int getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(int clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
     
+
     
     
     

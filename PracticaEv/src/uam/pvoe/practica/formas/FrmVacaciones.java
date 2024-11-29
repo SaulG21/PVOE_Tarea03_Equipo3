@@ -5,17 +5,46 @@
  */
 package uam.pvoe.practica.formas;
 
+import java.util.Enumeration;
+import java.util.LinkedList;
+import javax.swing.AbstractButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import uam.pvoe.practica.modelo.Atractivo;
+import uam.pvoe.practica.modelo.Estado;
+import uam.pvoe.practica.modelo.MedioTransporte;
+import uam.pvoe.practica.modelo.Servicio;
+import uam.pvoe.practica.operaciones.Operaciones;
+
 /**
  *
  * @author
  */
 public class FrmVacaciones extends javax.swing.JFrame {
 
+    LinkedList<JCheckBox>listaChkBoxes = new LinkedList();
+    
     /**
      * Creates new form FrmVacaciones
      */
     public FrmVacaciones() {
         initComponents();
+        
+        cmbEstados.removeAllItems();
+        cmbAtractivos.removeAllItems();
+        
+        agruparSelecciones();
+        agruparChkBoxes();
+        llenarListaEstados();
+        
+        llenarOpcionesTransporte();
+        llenarCheckBoxes();
+        
+        ocultarComponentes();
+        
+        
+        
     }
 
     /**
@@ -28,6 +57,7 @@ public class FrmVacaciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        btnGrpFormaViaje = new javax.swing.ButtonGroup();
         lblTitulo = new javax.swing.JLabel();
         cmbEstados = new javax.swing.JComboBox<>();
         cmbAtractivos = new javax.swing.JComboBox<>();
@@ -57,9 +87,11 @@ public class FrmVacaciones extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblTitulo.setText("Selección de Destinos Turísticos");
 
-        cmbEstados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbAtractivos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEstadosActionPerformed(evt);
+            }
+        });
 
         lblSeleccionaEstado.setText("Selecciona el Estado");
 
@@ -68,64 +100,80 @@ public class FrmVacaciones extends javax.swing.JFrame {
         lblServicioAdicional.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         lblServicioAdicional.setText("Servicios Adicionales en tu Estancia");
 
+        btnAutobus.setText("Autobus");
+
+        btnAvion.setText("Avión");
+
+        btnAutoPropio.setText("Auto Propio");
+
+        btnAutoRentado.setText("Auto Rentado");
+
         lblFormaViaje.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         lblFormaViaje.setText("¿Cómo piensas viajar?");
 
-        chkDesayuno.setText("jCheckBox1");
+        chkDesayuno.setText("Desayuno");
 
-        chkTour.setText("jCheckBox2");
+        chkTour.setText("Tour");
 
-        chkLavanderia.setText("jCheckBox3");
+        chkLavanderia.setText("Lavanderia");
 
-        chkGuarderia.setText("jCheckBox4");
+        chkGuarderia.setText("Guardería");
 
-        chkCajaFuerte.setText("jCheckBox5");
+        chkCajaFuerte.setText("Caja Fuerte");
 
-        chkDespertador.setText("jCheckBox6");
+        chkDespertador.setText("Despertador");
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(spr, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTitulo)
-                            .addComponent(cmbEstados, 0, 498, Short.MAX_VALUE)
-                            .addComponent(cmbAtractivos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(lblSeleccionaEstado)
-                        .addComponent(lblSeleccionaAtractivo)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnAutobus)
-                            .addGap(64, 64, 64)
-                            .addComponent(btnAvion)
-                            .addGap(69, 69, 69)
-                            .addComponent(btnAutoPropio)
-                            .addGap(70, 70, 70)
-                            .addComponent(btnAutoRentado))
-                        .addComponent(lblFormaViaje)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(chkTour)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chkGuarderia))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(chkDesayuno)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chkLavanderia))
-                                .addComponent(lblServicioAdicional, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGap(72, 72, 72)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(chkCajaFuerte)
-                                .addComponent(chkDespertador)))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spr, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblTitulo)
+                                .addComponent(cmbEstados, 0, 498, Short.MAX_VALUE)
+                                .addComponent(cmbAtractivos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblSeleccionaEstado)
+                            .addComponent(lblSeleccionaAtractivo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAutobus)
+                                .addGap(64, 64, 64)
+                                .addComponent(btnAvion)
+                                .addGap(69, 69, 69)
+                                .addComponent(btnAutoPropio)
+                                .addGap(70, 70, 70)
+                                .addComponent(btnAutoRentado))
+                            .addComponent(lblFormaViaje)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(chkTour)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chkGuarderia))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(chkDesayuno)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chkLavanderia))
+                                    .addComponent(lblServicioAdicional, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(72, 72, 72)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkDespertador)
+                                    .addComponent(chkCajaFuerte)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(btnRegistrar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,13 +210,56 @@ public class FrmVacaciones extends javax.swing.JFrame {
                     .addComponent(chkTour)
                     .addComponent(chkGuarderia)
                     .addComponent(chkDespertador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(btnRegistrar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadosActionPerformed
+        // TODO add your handling code here:
+        Estado estado = (Estado)cmbEstados.getSelectedItem();
+        
+        if (estado.getClave().compareTo("NULL")!=0){
+            JOptionPane.showMessageDialog(this, "Has seleccionado el estado: "+estado.getNombre());
+            
+            llenarListaAtractivos(estado.getClave());
+            mostrarAtractivos();
+        } else {
+            ocultarComponentes();
+        }
+    }//GEN-LAST:event_cmbEstadosActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        
+        String message = "";
+        
+        Estado estado = (Estado)cmbEstados.getSelectedItem();
+        Atractivo atraccion = (Atractivo)cmbAtractivos.getSelectedItem();
+        
+        MedioTransporte transporte = seleccionaTransporte();
+        
+        message = "Estado a visitar. \n" + estado.getClave() +": " + estado + "\n" + 
+                "Atracción turística-> " + atraccion.getClaveAtractivo() + ": " + atraccion + "\n" + 
+                "Medio de Transporte-> " + transporte.getClave() + "\n" +
+                "Servicios solicitados: \n";
+        
+        for (int i = 0; i < listaChkBoxes.size(); i++) {
+            JCheckBox aux = listaChkBoxes.get(i);
+            if (aux.isSelected()){
+                Servicio servicio = (Servicio)aux.getClientProperty("llave");
+                if (servicio.getClave()!= null){                
+                    message = message + "->" + servicio.getClave()+" \n";
+                }
+            }
+        }
+        
+        JOptionPane.showMessageDialog(this, message);
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,16 +291,154 @@ public class FrmVacaciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmVacaciones().setVisible(true);
+                 FrmVacaciones window = new FrmVacaciones();
+                window.pack();
+                window.setLocationRelativeTo(null);
+                window.setVisible(true);
             }
         });
     }
+    
+    public void ocultarComponentes(){
+         lblSeleccionaAtractivo.setVisible(false);
+         cmbAtractivos.setVisible(false);
+         spr.setVisible(false);
+         
+         lblFormaViaje.setVisible(false);
+         btnAutobus.setVisible(false);
+         btnAvion.setVisible(false);
+         btnAutoPropio.setVisible(false);
+         btnAutoRentado.setVisible(false);
+        
+         lblServicioAdicional.setVisible(false);
+         chkDesayuno.setVisible(false);
+         chkTour.setVisible(false);
+         chkLavanderia.setVisible(false);
+         chkGuarderia.setVisible(false);
+         chkCajaFuerte.setVisible(false);
+         chkDespertador.setVisible(false);
+         btnRegistrar.setVisible(false);
+    }
+    
+    public void mostrarAtractivos(){
+        Boolean flag = true;
+        lblSeleccionaAtractivo.setVisible(flag);
+         cmbAtractivos.setVisible(flag);
+         spr.setVisible(flag);
+         
+         lblFormaViaje.setVisible(flag);
+         btnAutobus.setVisible(flag);
+         btnAvion.setVisible(flag);
+         btnAutoPropio.setVisible(flag);
+         btnAutoRentado.setVisible(flag);
+        
+         lblServicioAdicional.setVisible(flag);
+         chkDesayuno.setVisible(flag);
+         chkTour.setVisible(flag);
+         chkLavanderia.setVisible(flag);
+         chkGuarderia.setVisible(flag);
+         chkCajaFuerte.setVisible(flag);
+         chkDespertador.setVisible(flag);
+         btnRegistrar.setVisible(flag);
+    }
+    
+    public void agruparSelecciones(){
+        btnGrpFormaViaje.add(btnAutobus);
+        btnGrpFormaViaje.add(btnAvion);
+        btnGrpFormaViaje.add(btnAutoPropio);
+        btnGrpFormaViaje.add(btnAutoRentado);
+    }
 
+    public void agruparChkBoxes(){
+        listaChkBoxes.add(chkDesayuno);
+        listaChkBoxes.add(chkTour);
+        listaChkBoxes.add(chkLavanderia);
+        listaChkBoxes.add(chkGuarderia);
+        listaChkBoxes.add(chkCajaFuerte);
+        listaChkBoxes.add(chkDespertador);
+    }
+    
+    public void llenarListaEstados(){
+        Operaciones oper = new Operaciones();
+        LinkedList<Estado> lista = oper.llenarListaEstados();
+        for (int i = 0; i < lista.size(); i++) {
+//            System.out.println(lista.get(i).toString());
+            cmbEstados.addItem(lista.get(i));
+        }
+    }
+    
+    public void llenarListaAtractivos(String clave){
+        Operaciones oper = new Operaciones();
+        cmbAtractivos.removeAllItems();
+        LinkedList<Atractivo> lista = oper.llenarListaAtractivos(clave);
+        for (int i = 0; i < lista.size(); i++) {
+//            System.out.println(lista.get(i).toString());
+            cmbAtractivos.addItem(lista.get(i));
+        }
+    }
+    
+    public MedioTransporte seleccionaTransporte(){
+        Enumeration<AbstractButton> btnGrp = btnGrpFormaViaje.getElements();
+        MedioTransporte transporte = new MedioTransporte();
+        while(btnGrp.hasMoreElements()){
+            JRadioButton btnAux = (JRadioButton)btnGrp.nextElement();
+            if (btnAux.isSelected()){
+                transporte = (MedioTransporte)btnAux.getClientProperty("llave");
+            }
+        }
+        return transporte;
+    }
+    
+    public void llenarOpcionesTransporte(){
+        MedioTransporte auto = new MedioTransporte("Auto", "AUTO");
+        MedioTransporte bus = new MedioTransporte("Autobús", "BUS");
+        MedioTransporte avion = new MedioTransporte("Avión", "AVION");
+        MedioTransporte autoRentado = new MedioTransporte("Auto Rentado", "AUTO_R");
+        
+        btnAutoPropio.setSelected(true);
+        btnAutoPropio.setText(auto.getNombre());
+        btnAutoPropio.putClientProperty("llave", auto);
+        
+        btnAutoRentado.setText(bus.getNombre());
+        btnAutoRentado.putClientProperty("llave", bus);
+        
+        btnAvion.setText(avion.getNombre());
+        btnAvion.putClientProperty("llave", avion);
+        
+        btnAutobus.setText(autoRentado.getNombre());
+        btnAutobus.putClientProperty("llave", autoRentado);
+        
+    }
+    
+    public void llenarCheckBoxes(){
+        Servicio des = new Servicio("Desayuno", "DES");
+        Servicio tour = new Servicio("Recorridos", "REC");
+        Servicio lavanderia = new Servicio("Lavandería", "LAV");
+        Servicio guarderia = new Servicio("Guardería", "GUA");
+        Servicio cajaFuerte = new Servicio("Caja Fuerte", "CAJA");
+        Servicio despertador = new Servicio("Despertador", "DESP");
+        
+        chkDesayuno.putClientProperty("llave", des);
+        chkTour.putClientProperty("llave", tour);
+        chkLavanderia.putClientProperty("llave", lavanderia);
+        chkGuarderia.putClientProperty("llave", guarderia);
+        chkCajaFuerte.putClientProperty("llave", cajaFuerte);
+        chkDespertador.putClientProperty("llave", despertador);
+        
+        chkDesayuno.setText(des.getNombre());
+        chkTour.setText(tour.getNombre());
+        chkLavanderia.setText(lavanderia.getNombre());
+        chkGuarderia.setText(guarderia.getNombre());
+        chkCajaFuerte.setText(cajaFuerte.getNombre());
+        chkDespertador.setText(despertador.getNombre());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnAutoPropio;
     private javax.swing.JRadioButton btnAutoRentado;
     private javax.swing.JRadioButton btnAutobus;
     private javax.swing.JRadioButton btnAvion;
+    private javax.swing.ButtonGroup btnGrpFormaViaje;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JCheckBox chkCajaFuerte;
     private javax.swing.JCheckBox chkDesayuno;
@@ -217,8 +446,8 @@ public class FrmVacaciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkGuarderia;
     private javax.swing.JCheckBox chkLavanderia;
     private javax.swing.JCheckBox chkTour;
-    private javax.swing.JComboBox<String> cmbAtractivos;
-    private javax.swing.JComboBox<String> cmbEstados;
+    private javax.swing.JComboBox<Atractivo> cmbAtractivos;
+    private javax.swing.JComboBox<Estado> cmbEstados;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lblFormaViaje;
     private javax.swing.JLabel lblSeleccionaAtractivo;
